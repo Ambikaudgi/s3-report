@@ -1,4 +1,3 @@
-
 <?php
 
 class db {
@@ -21,7 +20,7 @@ class db {
             // Load configuration as an array. Use the actual location of your configuration file
             try {
                 
-                self::$connection = new mysqli('192.168.3.37', 'grdbuser','Grdbuser@1', 'paysense');
+                self::$connection = new mysqli('192.168.3.37', 'grdbuser','Grdbuser@1', 'ambika');
 
             } catch (Exception $e) {
                 echo "Connection Failed == " . $e->getMessage();
@@ -129,4 +128,3 @@ class db {
 
 }
 ?>
-
