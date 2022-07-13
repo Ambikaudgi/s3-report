@@ -10,14 +10,14 @@ $db = new db();
 $con = $db->connect();
 
 if($con) {
- echo 'Connect';
+    // echo 'Connect';
 } else {
     echo 'Not Connect';
     exit();
 }
 
-// while(mysqli_more_results($con)){mysqli_next_result($con);}
-$sql="SELECT * FROM S3ReportAuto limit 5";
+while(mysqli_more_results($con)){mysqli_next_result($con);}
+$sql="SELECT * FROM S3ReportAuto";
 $result=$db->select($sql);
 echo '<pre>';
 foreach($result as $line) {
@@ -52,53 +52,56 @@ foreach($result as $line) {
     $UUI=$line['UUI'];
     $comments=$line['comments'];
 
-    while(mysqli_more_results($econ)){mysqli_next_result($econ);}
+    while(mysqli_more_results($con)){mysqli_next_result($con);}
     echo '<br>'.$sqli="CALL s3Report('$Site','$CallID','$CallType','$Campaign','$Location','$CallerNo','$Skill','$CallDate','$StartTime','$TimetoAnswer','$EndTime','$TalkTime','$HoldTime','$Duration','$CallFlow','$DialedNumber','$Agent','$Disposition','$WrapupDuration','$HandlingTime','$Status','$DialStatus','$CustomerDialStatus','$AgentDialStatus','$HangupBy','$TransferDetails','$UUI','$comments')";
-
-    $resultss=$db->select($sqli);
+    echo ';';
+    $resultss=$db->query($sqli);
+    // print_r($resultss);
 }
 
-// while(mysqli_more_results($con)) {mysqli_next_result($con);}
-// $sqlM="SELECT * FROM S3ReportMan";
-// $rowM = $db->select($sqlM);
-// foreach($rowM as $line) {
-//     // print_r($line);
-//     $Site = $line['Site'];
-//     $CallID = $line['CallID'];
-//     $CallType = $line['CallType'];
-//     $Campaign = $line['Campaign'];
-//     $Location = $line['Location'];
-//     $CallerNo = $line['CallerNo'];
-//     $Skill = $line['Skill'];
-//     $CallDate = $line['CallDate'];
-//     $StartTime = $line['StartTime'];
-//     $TimetoAnswer = $line['TimetoAnswer'];
-//     $EndTime = $line['EndTime'];
-//     $TalkTime = $line['TalkTime'];
-//     $HoldTime = $line['HoldTime'];
-//     $Duration = $line['Duration'];
-//     $CallFlow = $line['CallFlow'];
-//     $DialedNumber = $line['DialedNumber'];
-//     $Agent = $line['Agent'];
-//     $Disposition = $line['Disposition'];
-//     $WrapupDuration = $line['WrapupDuration'];
-//     $HandlingTime = $line['HandlingTime'];
-//     $Status = $line['Status'];
-//     $DialStatus = $line['DialStatus'];
-//     $CustomerDialStatus = $line['CustomerDialStatus'];
-//     $AgentDialStatus = $line['AgentDialStatus'];
-//     $HangupBy = $line['HangupBy'];
-//     $TransferDetails = $line['TransferDetails'];
-//     $UUI = $line['UUI'];
-//     $comments = $line['comments'];
+while(mysqli_more_results($con)) {mysqli_next_result($con);}
+$sqlM="SELECT * FROM S3ReportMan";
+$rowM = $db->select($sqlM);
+foreach($rowM as $line) {
+    // print_r($line);
+    $Site = $line['Site'];
+    $CallID = $line['CallID'];
+    $CallType = $line['CallType'];
+    $Campaign = $line['Campaign'];
+    $Location = $line['Location'];
+    $CallerNo = $line['CallerNo'];
+    $Skill = $line['Skill'];
+    $CallDate = $line['CallDate'];
+    $StartTime = $line['StartTime'];
+    $TimetoAnswer = $line['TimetoAnswer'];
+    $EndTime = $line['EndTime'];
+    $TalkTime = $line['TalkTime'];
+    $HoldTime = $line['HoldTime'];
+    $Duration = $line['Duration'];
+    $CallFlow = $line['CallFlow'];
+    $DialedNumber = $line['DialedNumber'];
+    $Agent = $line['Agent'];
+    $Disposition = $line['Disposition'];
+    $WrapupDuration = $line['WrapupDuration'];
+    $HandlingTime = $line['HandlingTime'];
+    $Status = $line['Status'];
+    $DialStatus = $line['DialStatus'];
+    $CustomerDialStatus = $line['CustomerDialStatus'];
+    $AgentDialStatus = $line['AgentDialStatus'];
+    $HangupBy = $line['HangupBy'];
+    $TransferDetails = $line['TransferDetails'];
+    $UUI = $line['UUI'];
+    $comments = $line['comments'];
     
-//     while(mysqli_more_results($con)) {mysqli_next_result($con);}
+    while(mysqli_more_results($con)) {mysqli_next_result($con);}
   
-//     echo '<br>'.$sqli="CALL s3Report('$Site','$CallID','$CallType','$Campaign','$Location','$CallerNo','$Skill','$CallDate','$StartTime','$TimetoAnswer','$EndTime','$TalkTime','$HoldTime','$Duration','$CallFlow','$DialedNumber','$Agent','$Disposition','$WrapupDuration','$HandlingTime','$Status','$DialStatus','$CustomerDialStatus','$AgentDialStatus','$HangupBy','$TransferDetails','$UUI','$comments')";
-//     $results=$db->select($sqli);
+    echo '<br>'.$sqli="CALL s3Report('$Site','$CallID','$CallType','$Campaign','$Location','$CallerNo','$Skill','$CallDate','$StartTime','$TimetoAnswer','$EndTime','$TalkTime','$HoldTime','$Duration','$CallFlow','$DialedNumber','$Agent','$Disposition','$WrapupDuration','$HandlingTime','$Status','$DialStatus','$CustomerDialStatus','$AgentDialStatus','$HangupBy','$TransferDetails','$UUI','$comments')";
+    $resultss=$db->query($sqli);
+    echo ';';
+    // print_r($resultss);
   
 
-// }
+}
 echo '</pre>'
 
 

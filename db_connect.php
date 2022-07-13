@@ -1,3 +1,4 @@
+
 <?php
 
 class db {
@@ -19,13 +20,13 @@ class db {
         if (!isset(self::$connection)) {
             // Load configuration as an array. Use the actual location of your configuration file
             try {
-                
-                self::$connection = new mysqli('192.168.3.37', 'grdbuser','Grdbuser@1', 'ambika');
-
+               
+           self::$connection = new mysqli('192.168.3.37','grdbuser','Grdbuser@1','ambika');    
+               
             } catch (Exception $e) {
                 echo "Connection Failed == " . $e->getMessage();
 
-               //  echo "message: " . $e->getMessage();  // not in live code obviously...
+               // echo "message: " . $e->getMessage();  // not in live code obviously...
                 
             }
         }
@@ -128,3 +129,4 @@ class db {
 
 }
 ?>
+
